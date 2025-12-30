@@ -4,14 +4,14 @@ on:
     branches:
       - main
       - dev
-env:    
+env:
   MONGODB_CLUSTER_ADDRESS: cluster0.uosof60.mongodb.net
 jobs:
   test:
     env:
       MONGODB_CLUSTER_ADDRESS: cluster0.uosof60.mongodb.net
-      MONGODB_USERNAME: hassan_db_user
-      MONGODB_PASSWORD: cIFeBgN886S2Oroi
+      MONGODB_USERNAME: ${{secrets.MONGODB_USERNAME}}
+      MONGODB_PASSWORD: ${{secrets.MONGODB_PASSWORD}}
       PORT: 3000
     environment: testing
     runs-on: ubuntu-latest
@@ -37,6 +37,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Output information
-        run: |        
+        run: |
           echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
           echo "MONGODB_USERNAME: ${{ env.MONGODB_CLUSTER_ADDRESS}}"
