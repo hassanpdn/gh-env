@@ -4,6 +4,8 @@ on:
     branches:
       - main
       - dev
+env:    
+  MONGODB_CLUSTER_ADDRESS: cluster0.uosof60.mongodb.net
 jobs:
   test:
     env:
@@ -29,12 +31,12 @@ jobs:
         run: npm test
       - name: Output information
         run: |
-          echo "MONGODB_USERNAME: ${{ env }}"
+          echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
   deploy:
     needs: test
     runs-on: ubuntu-latest
     steps:
       - name: Output information
         run: |        
-          echo "MONGODB_USERNAME: ${{ env }}"
-          echo "MONGODB_USERNAME: ${{ env }}"
+          echo "MONGODB_USERNAME: ${{ env.MONGODB_USERNAME }}"
+          echo "MONGODB_USERNAME: ${{ env.MONGODB_CLUSTER_ADDRESS}}"
